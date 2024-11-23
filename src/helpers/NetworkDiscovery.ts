@@ -1,4 +1,4 @@
-import { Resolver, createResolver, fetch } from '../platform';
+import { Resolver, createResolver } from '../platform';
 import { shuffle, promiseAny } from '../Utils';
 import { Registry, parse } from '../jxt';
 import XRDSchema, { XRD } from '../protocol/xrd';

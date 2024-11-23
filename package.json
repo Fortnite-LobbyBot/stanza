@@ -1,5 +1,5 @@
 {
-    "name": "stanza",
+    "name": "@fnlb-project/stanza",
     "description": "Modern XMPP in the browser, with a JSON API",
     "version": "12.20.0",
     "author": "Lance Stout <lancestout@gmail.com>",
@@ -8,19 +8,21 @@
         "Philipp Hancke <fippo@andyet.net>",
         "Steven Lloyd Watkin <lloyd@evilprofessor.co.uk>"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
+        "async": "^3.2.1",
+        "punycode": "^2.1.1",
+        "sdp": "^3.0.2",
+        "ws": "^8.2.2"
+    },
+    "devDependencies": {
+        "tslib": "^2.2.0",
         "@types/async": "^3.2.5",
         "@types/node": "^14.14.36",
         "@types/punycode": "^2.1.0",
         "@types/ws": "^7.4.0",
-        "async": "^3.2.1",
-        "node-fetch": "^2.6.2",
-        "punycode": "^2.1.1",
-        "sdp": "^3.0.2",
-        "tslib": "^2.2.0",
-        "ws": "^8.2.2"
-    },
-    "devDependencies": {
         "@types/jest": "^27.0.1",
         "@typescript-eslint/eslint-plugin": "^4.19.0",
         "@typescript-eslint/parser": "^4.19.0",
