@@ -1,6 +1,5 @@
 import { AsyncPriorityQueue, priorityQueue } from 'async';
 import { EventEmitter } from 'events';
-
 import { Agent, AgentConfig, Transport, TransportConfig } from './';
 import StreamManagement from './helpers/StreamManagement';
 import * as JID from './JID';

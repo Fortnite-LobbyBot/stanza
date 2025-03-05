@@ -134,3 +134,20 @@ export function reviveData(key: string, value: unknown): unknown {
     }
     return value;
 }
+
+
+export function ucs2Encode(arr: number[]): string {
+    let str = '';
+    for (let i = 0; i < arr.length; i++) {
+        str += String.fromCharCode(arr[i]);
+    }
+    return str;
+}
+
+export function ucs2Decode(str: string): number[] {
+    const arr = [];
+    for (let i = 0; i < str.length; i++) {
+        arr.push(str.charCodeAt(i));
+    }
+    return arr;
+}

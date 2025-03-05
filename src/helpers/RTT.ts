@@ -1,7 +1,7 @@
 import { AsyncPriorityQueue, priorityQueue } from 'async';
-import Punycode from 'punycode';
 
 import { RTT, RTTAction } from '../protocol';
+import { ucs2Decode, ucs2Encode } from '../Utils';
 
 export type UnicodeBuffer = number[];
 
@@ -62,7 +62,7 @@ export function diff(oldText: UnicodeBuffer, newText: UnicodeBuffer): RTTAction[
 
         events.push({
             position: prefixSize,
-            text: Punycode.ucs2.encode(insertedText),
+            text: ucs2Encode(insertedText),
             type: 'insert'
         });
     }
@@ -101,7 +101,7 @@ export class DisplayBuffer {
      * The encoded Unicode string to display.
      */
     public get text(): string {
-        return Punycode.ucs2.encode(this.buffer.slice());
+        return ucs2Encode(this.buffer.slice());
     }
 
     /**
@@ -161,7 +161,7 @@ export class DisplayBuffer {
     private insert(text = '', position: number = this.buffer.length): void {
         text = text.normalize('NFC');
 
-        const insertedText = Punycode.ucs2.decode(text);
+        const insertedText = ucs2Decode(text);
 
         this.buffer.splice(position, 0, ...insertedText);
         this.cursorPosition = position + insertedText.length;
@@ -276,7 +276,7 @@ export class InputBuffer {
     }
 
     public get text(): string {
-        return Punycode.ucs2.encode(this.buffer.slice());
+        return ucs2Encode(this.buffer.slice());
     }
 
     /**
@@ -292,7 +292,7 @@ export class InputBuffer {
         if (text !== undefined) {
             text = text.normalize('NFC');
 
-            const newBuffer = Punycode.ucs2.decode(text);
+            const newBuffer = ucs2Decode(text);
             actions = diff(this.buffer, newBuffer.slice());
 
             this.buffer = newBuffer;

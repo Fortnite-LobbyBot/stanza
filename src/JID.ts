@@ -1,4 +1,3 @@
-import Punycode from 'punycode';
 import { nameprep, nodeprep, resourceprep } from './lib/stringprep';
 
 export type JID = string;
@@ -86,7 +85,7 @@ export function prepare(data: JIDParts): JIDParts {
         domain = domain.slice(0, domain.length - 1);
     }
 
-    domain = nameprep(domain.split('.').map(Punycode.toUnicode).join('.'));
+    domain = nameprep(domain.split('.').join('.'));
 
     return {
         domain,
